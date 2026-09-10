@@ -1,0 +1,8 @@
+<h1><%= @project.id %></h1>
+<h1>Project's Name: <%= @project.name %></h1>
+
+<h1>Edit:</h1>
+<%= form_with(model: @project, url: project_edit_path(@project.id), method: :patch) do |form| %>
+    <%= form.text_field :name, placeholder: "Project's Name", autofocus:true %>
+    <%= form.submit "Update Project" %>
+<% end %>

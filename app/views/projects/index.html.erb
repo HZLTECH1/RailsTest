@@ -1,0 +1,18 @@
+<% if flash[:status] %>
+    <h2 style="color: blue;"><%= flash[:status] %></h2>
+<% end %>
+<% if flash[:delete_status] %>
+    <h1 style="color: red;"><%= flash[:delete_status] %></h1>
+<% end %>
+<% @projects.each do |project| %>
+    <h2><%= project.name %></h2>
+    <%= link_to "Show", project_show_path(project.id), style:"color: blue;text-decoration:none;" %>
+    <%= link_to "Edit", project_edit_page_path(project), style: "color: blue;text-decoration:none" %>
+    <%= button_to "Delete", project_delete_path(project), method: :delete , style: "color:blue;text-decoration:none;" %>
+<% end %>
+
+
+<%= form_with(model: @project, url: root_path) do |f| %>
+<%= f.text_field :name, placeholder: "Enter Project's Name", autofocus:true %>
+<%= f.submit "Create Project" %>
+<% end %>
